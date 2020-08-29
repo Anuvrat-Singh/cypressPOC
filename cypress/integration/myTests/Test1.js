@@ -9,16 +9,16 @@ describe('My first sample test suite', function() {
         cy.get('.product:visible').should('have.length', 4)
 
         /* parent child chaining -> it help us to overcome the use of visible property
-           the concept is to narrow downthe element to operate from parent to particular element.
-           get method is used to fin the element with css locator after that we use find() to locate the
-           particular element inside the element list. 
+           the concept is to narrow down the element to operate from parent to particular element.
+           get method is used to find the element with css locator after that we use find() to locate
+           the particular element inside the element list. 
 
            eq() takes index as an argument and locates the particular element at given index in the list of array 
            */
 
-        cy.get('.products').as('productsLocator')
-        cy.get('@productsLocator').find('.product').should('have.length', 4)
-        cy.get('@productsLocator').find('.product').eq(2).contains('ADD TO CART').click()
+        cy.get('.products').find('.product').as('productsLocator')    //as() is used for aliasing(similar to variable)
+        cy.get('@productsLocator').should('have.length', 4)
+        cy.get('@productsLocator').eq(2).contains('ADD TO CART').click()
 
 
         /* It may happen that a particular item to be searched is not available at a defined index.
@@ -27,7 +27,7 @@ describe('My first sample test suite', function() {
         for iteration use the .each method which takes element, index and list as parameter
         */
 
-        cy.get('@productsLocator').find('.product').each(($element, index, $list) => 
+        cy.get('@productsLocator').each(($element, index, $list) => 
         {
             const itemName = $element.find('h4.product-name').text()  //promise resoled by $element
                         
@@ -52,7 +52,7 @@ describe('My first sample test suite', function() {
 
         cy.get('.brand.greenlogo').should('have.text', 'GREENKART') //assertion
 
-        cy.get('@productsLocator').find('.product').then(function() {
+        cy.get('@productsLocator').then(function() {
             console.log("I run")
         })
 

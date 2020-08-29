@@ -9,6 +9,7 @@
   "author": "AnuvratSingh",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^5.0.0"
+    "cypress": "^5.0.0",
+    "cypress-iframe": "^1.0.1"
   }
 }
