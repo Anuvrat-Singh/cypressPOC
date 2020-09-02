@@ -1,3 +1,4 @@
+// key -> b4f9c212-248f-4225-8d50-d95d6a070cd1
 /// <reference types="Cypress" />
 import '../sampleFramework/PageObjects/HomePage'
 import '../sampleFramework/PageObjects/ProductsPage'
@@ -26,7 +27,7 @@ describe('Sample Test Automation Framework', function() {
 
         Cypress.config('defaultCommandTimeout',10000)
         
-        cy.visit("https://www.rahulshettyacademy.com/angularpractice/")
+        cy.visit(Cypress.env('url') + "angularpractice")
         homePage.getNameField().type(this.data.name)
         homePage.getGender().select(this.data.gender).should('have.value', 'Male')
         homePage.getTwoWayBindingTextBox().should('have.value', this.data.name)

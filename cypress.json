@@ -1,4 +1,8 @@
 {
-    "chromeWebSecurity": false,
-    "defaultCommandTimeout": 8000
+  "chromeWebSecurity": false,
+  "defaultCommandTimeout": 8000,
+  "env": {
+    "url": "https://www.rahulshettyacademy.com/"
+  },
+  "projectId": "fw6w48"
 }

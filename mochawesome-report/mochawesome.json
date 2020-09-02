@@ -1,0 +1,100 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2020-09-02T19:21:13.314Z",
+    "end": "2020-09-02T19:21:24.139Z",
+    "duration": 10825,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b84f26c9-aad1-4ce7-a9a8-b0200dc90d8b",
+      "title": "",
+      "fullFile": "cypress/integration/sampleFramework/TestSuite1.js",
+      "file": "cypress/integration/sampleFramework/TestSuite1.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "4e4cd638-c3b9-4bb4-b0cf-b953d6418b31",
+          "title": "Sample Test Automation Framework",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Fill Username and gender",
+              "fullTitle": "Sample Test Automation Framework Fill Username and gender",
+              "timedOut": null,
+              "duration": 9459,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "var homePage = new _HomePage[\"default\"]();\nvar productPage = new _ProductsPage[\"default\"]();\nvar cartPage = new _CartPage[\"default\"]();\nvar orderSummary = new _OrderSummary[\"default\"]();\nCypress.config('defaultCommandTimeout', 10000);\ncy.visit(Cypress.env('url') + \"angularpractice\");\nhomePage.getNameField().type(this.data.name);\nhomePage.getGender().select(this.data.gender).should('have.value', 'Male');\nhomePage.getTwoWayBindingTextBox().should('have.value', this.data.name);\nhomePage.getNameField().should('have.attr', 'minlength', '2');\nhomePage.getEntreprenuerRadio().should('be.disabled');\nhomePage.getShopTab().click();\nthis.data.productName.forEach(function (element) {\n  cy.addProductToCart(element);\n});\nproductPage.getCheckoutButton().click();\ncartPage.getProduct().each(function ($el, index, $list) {\n  var amount = $el.text().split(\" \");\n  amount = amount[1].trim(); //            cy.log(amount)\n  sum = Number(sum) + Number(amount); //            cy.wrap(sum).as('sum')\n}).then(function () {\n  cy.log(sum);\n});\ncartPage.getTotal().then(function (element) {\n  total = element.text().split(\" \");\n  total = total[1].trim();\n  cy.log(total); //            cy.wrap(total).as('total')\n  expect(Number(total)).to.equal(sum);\n});\ncy.log('checkpoint');\ncartPage.getCheckout().click();\norderSummary.getCountry().type(this.data.country);\norderSummary.getSuggestedCountry().click();\norderSummary.getTermsCheckbox().click({\n  force: true\n}).should('be.checked');\norderSummary.getPurchase().click();\ncy.get('.alert').then(function (element) {\n  expect(element.text().includes('Success')).to.be[\"true\"];\n});",
+              "err": {},
+              "uuid": "06928853-0163-4d10-995c-080ba979bbfb",
+              "parentUUID": "4e4cd638-c3b9-4bb4-b0cf-b953d6418b31",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "06928853-0163-4d10-995c-080ba979bbfb"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 9459,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.1.1"
+    },
+    "marge": {
+      "options": null,
+      "version": "5.1.0"
+    }
+  }
+}
